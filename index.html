@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Photography Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="source-code-pro-regular"><b>Mono is More</b></h1>
+        <p class="source-code-pro-light">When <b>B&W</b> Speaks Louder</p>
+    </header>
+
+    <main>
+        <section class="blog-list">
+            <!-- First Blog Post -->
+            <a href="posts/Sea.html" class="blog-post" data-title="Sea" data-published="11-10-2024" data-image="../blog-images/Sea.JPG">
+                
+            </a>
+
+            <!-- Second Blog Post -->
+            <a href="posts/Road.html" class="blog-post" data-title="Road" data-published="11-10-2024" data-image="../blog-images/Road.JPG">
+    
+            </a>
+
+    </main>
+
+    <footer>
+        <p class="source-code-pro-light">&copy; 2024 Long Winter Project</p>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="about.html" class="source-code-pro-light">About</a></li>
+                <li><a href="contact.html" class="source-code-pro-light">Contact</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Select all blog post links
+        const blogPosts = document.querySelectorAll('.blog-post');
+
+        blogPosts.forEach(post => {
+            // Get the publication date and title from data attributes
+            const publishedDate = post.getAttribute('data-published');
+            const title = post.getAttribute('data-title');
+            const imageSrc = post.getAttribute('data-image'); // New: Get the dynamic image source
+
+            // Format the date to "Published on 11, Oct, 2024"
+            const dateParts = publishedDate.split('-');
+            const formattedDate = `Published on ${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
+
+            // Create title and date paragraph elements
+            const titleElement = document.createElement('p');
+            const dateElement = document.createElement('p');
+            const imgElement = document.createElement('img'); // New: Dynamically create an image element
+
+            // Set the text content of the paragraphs
+            titleElement.className = 'source-code-pro-light'; // Add your desired class
+            titleElement.textContent = title; // Dynamic title from data attribute
+            titleElement.innerHTML = `<strong>${title}</strong>`; // Make the title bold using innerHTML
+            dateElement.className = 'source-code-pro-light date-published'; // Add class for styling
+            dateElement.textContent = formattedDate;
+            
+            imgElement.src = imageSrc; // Set the src attribute of the image
+            imgElement.alt = "Blog Post Image"; // You might want to make this dynamic too, depending on your needs
+
+            // Insert the title and date elements to the left of the image
+            // Insert the elements into the blog post link
+            post.appendChild(titleElement);
+            post.appendChild(dateElement);
+            post.appendChild(imgElement);
+            post.insertBefore(dateElement, post.firstChild);
+            post.insertBefore(titleElement, dateElement);
+
+            // Get the image and adjust its size based on its natural size
+            const img = post.querySelector('img');
+            img.onload = function() {
+                const originalWidth = img.naturalWidth;
+                const maxDisplayWidth = 1020; // Define max display width
+
+                // Set image width based on original size
+                if (originalWidth < maxDisplayWidth) {
+                    img.style.width = 'auto'; // Keep original size
+                    img.style.maxWidth = 'none'; // Disable max width
+                } else {
+                    img.style.width = '100%'; // Otherwise, make it responsive
+                    img.style.height = 'auto'; // Maintain aspect ratio
+                }
+            };
+
+            // Create and insert the image title below the image
+            const imageTitleElement = document.createElement('p');
+            imageTitleElement.className = 'image-title';
+            imageTitleElement.textContent = img.src.split('/').pop(); // Set image title as the file name
+            post.appendChild(imageTitleElement);
+        });
+    </script>
+
+</body>
+</html>
