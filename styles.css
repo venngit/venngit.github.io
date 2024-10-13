@@ -148,3 +148,17 @@ footer a:hover, footer a:active, footer a:focus {
     text-decoration: none; /* No underline on hover/active/focus */
     color: #fff; /* No color change on hover/active/focus */
 }
+
+.map-container {
+    position: relative;
+  }
+  
+  .map-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .location-map {
+    max-width: 1000px; /* adjust this value as needed */
+    margin: 0 auto;
+  }
