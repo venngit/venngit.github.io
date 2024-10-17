@@ -55,9 +55,9 @@
         const title = post.getAttribute('data-title');
         const imageSrc = post.getAttribute('data-image'); // New: Get the dynamic image source
 
-        // Format the date to "Published on 11, Oct, 2024"
+        // Format the date to "11, Oct, 2024"
         const dateParts = publishedDate.split('-');
-        const formattedDate = `Published on ${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
+        const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
 
         // Create title and date paragraph elements
         const titleElement = document.createElement('p');
