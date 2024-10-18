@@ -1,25 +1,51 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Set HTML and body to 100% height to allow flexbox to work */
+html, body {
+    height: 100%;
+}
+
 body {
-    font-family: "Source Code Pro", monospace; /* Use Source Code Pro for the entire site */
+    font-family: "Source Code Pro", monospace;
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
-    text-align: center; /* Center all text */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Make the body a flex container */
+    min-height: 100vh; /* Ensure it takes up at least the full viewport height */
+}
+
+/* Ensure main content takes up the remaining space */
+main {
+    flex: 1; /* This allows the main content to expand and push the footer down */
+    max-width: 1020px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 header {
     padding: 50px 20px;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styles for the "Updated Weekly" text */
+.updated-weekly-text {
+    font-size: 0.9rem; /* Smaller font size */
+    color: #666; /* Lighter text color */
+    margin-top: 10px; /* Space between the subtitle and this text */
+    font-style: italic; /* Make it italic if desired */
 }
 
 header h1, header p {
-    margin: 0; /* Remove default margin */
+    margin: 0;
 }
 
 header h1 {
@@ -32,96 +58,147 @@ header p {
     color: #666;
 }
 
-main {
-    max-width: 1020px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
+/* Blog List */
 .blog-list {
     display: grid;
-    grid-template-columns: 1fr; /* Single column for images */
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
 .blog-post {
-    text-align: left; /* Align text to the left */
+    text-align: left;
 }
 
 .blog-list a {
     display: flex;
-    flex-direction: column; /* Stack title and image vertically */
-    align-items: flex-start; /* Align items to the left */
-    text-decoration: none; /* Remove underline from links */
-    color: inherit; /* Keep the color of text the same as parent */
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Title and date styling */
 .blog-list a p {
-    margin-bottom: 5px; /* Space between date and image */
-    font-size: 0.9rem; /* Smaller font size */
-    color: #777; /* Lighter color for the date */
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #777;
 }
 
 .blog-list a img {
-    max-width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .blog-list a img:hover {
-    transform: scale(1.01); /* Zoom on hover */
+    transform: scale(1.01);
 }
 
-/* Image title styling */
 .image-title {
-    text-align: left; /* Align the image title to the left */
-    font-size: 0.9rem; /* Smaller font size */
-    margin-top: 5px; /* Space between the image and title */
-    color: #333; /* Title color */
+    text-align: left;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: #333;
 }
 
+/* Awards Page */
+.awards-container {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.award-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.award-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.award-item:last-child {
+    border-bottom: none;
+}
+
+.award-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-family: 'Source Code Pro', monospace;
+    transition: color 0.3s ease;
+}
+
+.award-link:hover {
+    color: #000;
+}
+
+/* Enter Now and Deadline positioning */
+.entry-deadline-section {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.latest-opening-entry-link {
+    font-size: 0.85rem;
+    color: #337ab7;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.deadline-text {
+    font-size: 0.85rem;
+}
+
+.deadline-expired {
+    color: red;
+}
+
+.deadline-active {
+    color: green;
+}
+
+/* Grey out N/A fields */
+.latest-opening-entry-link[style="color: grey"] {
+    color: grey !important;
+}
+
+.deadline-text[style="color: grey"] {
+    color: grey !important;
+}
+
+/* Style for the last update text */
+.last-update {
+    text-align: left; /* Align the text to the right */
+    margin-bottom: 10px; /* Add some space below it before the awards container */
+    margin-right: 10px; /* Slight padding on the right */
+}
+
+.last-update p {
+    font-size: 0.85rem; /* Smaller font size */
+    color: #666; /* Lighter text color */
+    font-style: italic; /* Make it italic for subtle emphasis */
+}
+
+/* Footer Styles */
 footer {
     padding: 20px;
     font-size: 0.9rem;
-    background-color: #fff;
+    background-color: #3e3939;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Font Classes */
-.source-code-pro-light {
-    font-family: "Source Code Pro", monospace;
-    font-weight: 200; /* Light */
-}
-
-.source-code-pro-regular {
-    font-family: "Source Code Pro", monospace;
-    font-weight: 400; /* Regular */
-}
-
-/* You can add more classes for different weights if needed */
-.source-code-pro-medium {
-    font-family: "Source Code Pro", monospace;
-    font-weight: 500; /* Medium */
-}
-
-.source-code-pro-bold {
-    font-family: "Source Code Pro", monospace;
-    font-weight: 700; /* Bold */
-}
-
-footer {
-    padding: 20px;
-    background-color: #333;
     text-align: center;
     color: #fff;
+    margin-top: 40px;
 }
 
 .footer-links {
     list-style: none;
-    margin: 0;
     padding: 0;
 }
 
@@ -131,41 +208,31 @@ footer {
 }
 
 .footer-links a {
-    color: inherit;
-    transition: color 0.3s ease-in-out; /* Add a smooth color transition effect */
+    color: #e6e6e6;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
 .footer-links a:hover {
-    color: #ccc; /* Change the link color on hover */
+    color: #848484;
 }
 
-footer a {
-    text-decoration: none; /* Remove underline */
-    color: #fff; /* Maintain white color on hover */
-}
-
-footer a:hover, footer a:active, footer a:focus {
-    text-decoration: none; /* No underline on hover/active/focus */
-    color: #fff; /* No color change on hover/active/focus */
-}
-
+/* Map Styles */
 .map-container {
     position: relative;
-  }
-  
-  .map-image {
+}
+
+.map-image {
     width: 100%;
     height: auto;
-  }
-  
-  .location-map {
-    max-width: 1000px; /* adjust this value as needed */
+}
+
+.location-map {
+    max-width: 1000px;
     margin: 0 auto;
-  }
+}
 
-/*map*/
-
-  #basicMap {
+#basicMap {
     width: 100%;
     height: 400px;
 }
@@ -173,4 +240,34 @@ footer a:hover, footer a:active, footer a:focus {
 /* Custom style for the map to make it black and white */
 .ol-layer {
     filter: grayscale(100%);
+}
+
+/* Font Classes */
+.source-code-pro-light {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 200;
+}
+
+.source-code-pro-regular {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 400;
+}
+
+.source-code-pro-medium {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 500;
+}
+
+.source-code-pro-bold {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 700;
+}
+
+.footer-links li a.photowards-link {
+    color: #ff2222;
+    text-decoration: none;
+}
+
+.footer-links li a.photowards-link:hover {
+    color: #dc7c5f; /* Optional: Change color on hover */
 }

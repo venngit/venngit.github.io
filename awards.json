@@ -3,28 +3,43 @@
       "id": 1,
       "name": "World Press Photo",
       "url": "https://www.worldpressphoto.org/",
-      "latestOpeningEntry": "https://www.worldpressphoto.org/enter",
-      "deadline": "January 11, 2023"
+      "latestOpeningEntry": "N/A",
+      "deadline": "N/A"
     },
     {
       "id": 2,
       "name": "Sony World Photography Awards",
       "url": "https://www.worldphoto.org/sony-world-photography-awards",
       "latestOpeningEntry": "https://www.worldphoto.org/enter/sony-world-photography-awards",
-      "deadline": "January 14, 2023"
+      "deadline": "January 3, 2025"
     },
     {
       "id": 3,
       "name": "National Geographic Photo Contest",
-      "url": "https://www.nationalgeographic.com/contests/photo-contest/",
-      "latestOpeningEntry": "https://www.nationalgeographic.com/contests/photo-contest/enter",
-      "deadline": "November 15, 2022"
+      "url": "https://www.nationalgeographic.com/contests",
+      "latestOpeningEntry": "N/A",
+      "deadline": "N/A"
     },
     {
       "id": 4,
       "name": "International Photography Awards",
       "url": "https://www.photoawards.com/",
-      "latestOpeningEntry": "https://www.photoawards.com/enter",
-      "deadline": "June 30, 2023"
+      "latestOpeningEntry": "https://www.photoawards.com/how-to-enter",
+      "deadline": "July 1, 2024"
+    },
+    {
+      "id": 5,
+      "name": "Leica Oskar Barnack Award",
+      "url": "https://www.leica-oskar-barnack-award.com/en/",
+      "latestOpeningEntry": "https://www.leica-oskar-barnack-award.com/en/",
+      "deadline": "N/A"
+    },
+    {
+      "id": 6,
+      "name": "Leica Oskar Barnack Award",
+      "url": "https://www.nikon-photocontest.com/en/",
+      "latestOpeningEntry": "https://www.nikon-photocontest.com/en//",
+      "deadline": "N/A"
     }
-  ]
+
+]
