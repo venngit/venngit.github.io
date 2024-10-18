@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "World Press Photo",
+      "url": "https://www.worldpressphoto.org/",
+      "latestOpeningEntry": "https://www.worldpressphoto.org/enter",
+      "deadline": "January 11, 2023"
+    },
+    {
+      "id": 2,
+      "name": "Sony World Photography Awards",
+      "url": "https://www.worldphoto.org/sony-world-photography-awards",
+      "latestOpeningEntry": "https://www.worldphoto.org/enter/sony-world-photography-awards",
+      "deadline": "January 14, 2023"
+    },
+    {
+      "id": 3,
+      "name": "National Geographic Photo Contest",
+      "url": "https://www.nationalgeographic.com/contests/photo-contest/",
+      "latestOpeningEntry": "https://www.nationalgeographic.com/contests/photo-contest/enter",
+      "deadline": "November 15, 2022"
+    },
+    {
+      "id": 4,
+      "name": "International Photography Awards",
+      "url": "https://www.photoawards.com/",
+      "latestOpeningEntry": "https://www.photoawards.com/enter",
+      "deadline": "June 30, 2023"
+    }
+  ]
