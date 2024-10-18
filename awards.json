@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "name": "World Press Photo",
+      "url": "https://www.worldpressphoto.org/",
+      "latestOpeningEntry": "N/A",
+      "deadline": "N/A"
+    },
+    {
+      "id": 2,
+      "name": "Sony World Photography Awards",
+      "url": "https://www.worldphoto.org/sony-world-photography-awards",
+      "latestOpeningEntry": "https://www.worldphoto.org/enter/sony-world-photography-awards",
+      "deadline": "January 3, 2025"
+    },
+    {
+      "id": 3,
+      "name": "National Geographic Photo Contest",
+      "url": "https://www.nationalgeographic.com/contests",
+      "latestOpeningEntry": "N/A",
+      "deadline": "N/A"
+    },
+    {
+      "id": 4,
+      "name": "International Photography Awards",
+      "url": "https://www.photoawards.com/",
+      "latestOpeningEntry": "https://www.photoawards.com/how-to-enter",
+      "deadline": "July 1, 2024"
+    },
+    {
+      "id": 5,
+      "name": "Leica Oskar Barnack Award",
+      "url": "https://www.leica-oskar-barnack-award.com/en/",
+      "latestOpeningEntry": "https://www.leica-oskar-barnack-award.com/en/",
+      "deadline": "N/A"
+    },
+    {
+      "id": 6,
+      "name": "Leica Oskar Barnack Award",
+      "url": "https://www.nikon-photocontest.com/en/",
+      "latestOpeningEntry": "https://www.nikon-photocontest.com/en//",
+      "deadline": "N/A"
+    }
+
+]
