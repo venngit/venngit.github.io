@@ -40,6 +40,13 @@
       "url": "https://www.nikon-photocontest.com/en/",
       "latestOpeningEntry": "https://www.nikon-photocontest.com/en//",
       "deadline": "N/A"
+    },
+    {
+      "id": 7,
+      "name": "The Independent Photographer",
+      "url": "https://independent-photo.com/",
+      "latestOpeningEntry": "https://independent-photo.com/competition/",
+      "deadline": "October 31, 2024"      
     }
 
 ]

@@ -45,83 +45,103 @@
 
     <script>
         // Function to check if the deadline is expired or active
-        function getDeadlineStatus(deadline) {
-            if (deadline === "N/A") {
-                return 'n/a';
-            }
-    
-            const deadlineDate = new Date(deadline);
-            const today = new Date();
-    
-            return deadlineDate < today ? 'expired' : 'active';
+function getDeadlineStatus(deadline) {
+    if (deadline === "N/A") {
+        return 'n/a';
+    }
+
+    const deadlineDate = new Date(deadline);
+    const today = new Date();
+
+    return deadlineDate < today ? 'expired' : 'active';
+}
+
+// Sorting function to prioritize active > expired > N/A
+function sortByDeadline(a, b) {
+    const statusA = getDeadlineStatus(a.deadline);
+    const statusB = getDeadlineStatus(b.deadline);
+
+    const statusOrder = {
+        'active': 1,
+        'expired': 2,
+        'n/a': 3
+    };
+
+    // Compare deadline status first
+    if (statusOrder[statusA] < statusOrder[statusB]) {
+        return -1;
+    } else if (statusOrder[statusA] > statusOrder[statusB]) {
+        return 1;
+    } else {
+        // If both have the same deadline status, check for latestOpeningEntry
+        if (a.latestOpeningEntry === "N/A" && b.latestOpeningEntry !== "N/A") {
+            return 1;
+        } else if (a.latestOpeningEntry !== "N/A" && b.latestOpeningEntry === "N/A") {
+            return -1;
+        } else {
+            return 0;
         }
-    
-        // Fetch the JSON data from a file
-        fetch('awards.json')
-            .then(response => response.json())
-            .then(data => {
-                // Sort the data
-                const sortedAwards = data.sort((a, b) => {
-                    if (a.latestOpeningEntry === "N/A" && b.latestOpeningEntry !== "N/A") {
-                        return 1;
-                    } else if (a.latestOpeningEntry !== "N/A" && b.latestOpeningEntry === "N/A") {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                });
-    
-                // Generate and display sorted awards
-                const awardsContainer = document.createElement('ul');
-                awardsContainer.className = 'award-list';
-    
-                sortedAwards.forEach(award => {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'award-item';
-                    
-                    // Award name
-                    const awardLink = document.createElement('a');
-                    awardLink.className = 'award-link';
-                    awardLink.href = award.url;
-                    awardLink.textContent = award.name;
-    
-                    // Entry link
-                    const entryLink = document.createElement('a');
-                    entryLink.className = 'latest-opening-entry-link';
-                    entryLink.href = award.latestOpeningEntry === "N/A" ? '#' : award.latestOpeningEntry;
-                    entryLink.textContent = award.latestOpeningEntry === "N/A" ? "Entry Closed" : "Enter Now";
-                    if (award.latestOpeningEntry === "N/A") {
-                        entryLink.style.color = 'grey';
-                    }
-    
-                    // Deadline handling
-                    const deadlineText = document.createElement('p');
-                    deadlineText.className = 'deadline-text';
-                    deadlineText.textContent = `Deadline: ${award.deadline}`;
-                    
-                    // Apply the proper class for deadline status
-                    const deadlineStatus = getDeadlineStatus(award.deadline);
-                    if (deadlineStatus === 'expired') {
-                        deadlineText.classList.add('deadline-expired');
-                    } else if (deadlineStatus === 'active') {
-                        deadlineText.classList.add('deadline-active');
-                    } else if (deadlineStatus === 'n/a') {
-                        deadlineText.style.color = 'grey';
-                    }
-    
-                    // Append elements to the list item
-                    listItem.appendChild(awardLink);
-                    listItem.appendChild(entryLink);
-                    listItem.appendChild(deadlineText);
-    
-                    // Append list item to the awards container
-                    awardsContainer.appendChild(listItem);
-                });
-    
-                // Add the sorted list to the DOM
-                document.querySelector('.awards-container').appendChild(awardsContainer);
-            })
-            .catch(error => console.error('Error loading awards data:', error));
+    }
+}
+
+// Fetch the JSON data from a file
+fetch('awards.json')
+    .then(response => response.json())
+    .then(data => {
+        // Sort the data by deadline status and latestOpeningEntry
+        const sortedAwards = data.sort(sortByDeadline);
+
+        // Generate and display sorted awards
+        const awardsContainer = document.createElement('ul');
+        awardsContainer.className = 'award-list';
+
+        sortedAwards.forEach(award => {
+            const listItem = document.createElement('li');
+            listItem.className = 'award-item';
+
+            // Award name
+            const awardLink = document.createElement('a');
+            awardLink.className = 'award-link';
+            awardLink.href = award.url;
+            awardLink.textContent = award.name;
+
+            // Entry link
+            const entryLink = document.createElement('a');
+            entryLink.className = 'latest-opening-entry-link';
+            entryLink.href = award.latestOpeningEntry === "N/A" ? '#' : award.latestOpeningEntry;
+            entryLink.textContent = award.latestOpeningEntry === "N/A" ? "Entry Closed" : "Enter Now";
+            if (award.latestOpeningEntry === "N/A") {
+                entryLink.style.color = 'grey';
+            }
+
+            // Deadline handling
+            const deadlineText = document.createElement('p');
+            deadlineText.className = 'deadline-text';
+            deadlineText.textContent = `Deadline: ${award.deadline}`;
+
+            // Apply the proper class for deadline status
+            const deadlineStatus = getDeadlineStatus(award.deadline);
+            if (deadlineStatus === 'expired') {
+                deadlineText.classList.add('deadline-expired');
+            } else if (deadlineStatus === 'active') {
+                deadlineText.classList.add('deadline-active');
+            } else if (deadlineStatus === 'n/a') {
+                deadlineText.style.color = 'grey';
+            }
+
+            // Append elements to the list item
+            listItem.appendChild(awardLink);
+            listItem.appendChild(entryLink);
+            listItem.appendChild(deadlineText);
+
+            // Append list item to the awards container
+            awardsContainer.appendChild(listItem);
+        });
+
+        // Add the sorted list to the DOM
+        document.querySelector('.awards-container').appendChild(awardsContainer);
+    })
+    .catch(error => console.error('Error loading awards data:', error));
     </script>
 
 </body>
