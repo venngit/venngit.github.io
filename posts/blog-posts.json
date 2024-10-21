@@ -1,6 +1,13 @@
 {
     "posts": [
       {
+        "title": "Find The Light",
+        "published": "21-10-2024",
+        "image": "../blog-images/thelight.jpeg",
+        "link": "posts/The-Light.html",
+        "hasMap": false
+      },
+      {
         "title": "Break Time",
         "published": "18-10-2024",
         "image": "../blog-images/break time.jpg",
