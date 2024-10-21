@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mono is More - Break Time</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header>
+        <h2 id="post-title">Loading Post...</h2>
+        <br>
+        <p id="post-date">Published on DATE</p>
+        <br>
+        <p><a href="../index.html">Back to Home</a></p>
+    </header>
+
+    <main>
+        <article>
+            <p id="post-content"></p>
+            
+            <img id="post-image" src="../blog-images/default.jpg" alt="Break Time" style="max-width:100%; height:auto; margin:20px 0;">
+
+            <p id="post-caption"></p>
+        </article>
+    </main>
+
+    <footer>
+        <p class="source-code-pro-light">&copy; 2024 Long Winter Project</p>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="../index.html" class="source-code-pro-light">Home</a></li>
+                <li><a href="../about.html" class="source-code-pro-light">About</a></li>
+                <li><a href="../contact.html" class="source-code-pro-light">Contact</a></li>
+                <li><a href="../photowards.html" class="source-code-pro-light photowards-link">Photowards</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Function to format the date as "18 Oct 2024"
+        function formatDate(dateString) {
+            const dateParts = dateString.split('-');
+            const day = dateParts[0];
+            const month = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`).toLocaleString('en-US', { month: 'short' });
+            const year = dateParts[2];
+            return `${day} ${month} ${year}`;
+        }
+
+        // Fetch the blog posts JSON
+        fetch('../posts/blog-posts.json')
+            .then(response => response.json())
+            .then(data => {
+                // Find the post for "Break Time"
+                const post = data.posts.find(p => p.title === "Find The Light");
+
+                if (post) {
+                    // Update the page content with the post data
+                    document.getElementById('post-title').textContent = post.title;
+                    document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
+                    document.getElementById('post-image').src = post.image;
+                    document.getElementById('post-image').alt = post.title;
+                } else {
+                    document.getElementById('post-title').textContent = "Post not found";
+                    document.getElementById('post-date').textContent = "";
+                    document.getElementById('post-image').style.display = 'none';
+                }
+            })
+            .catch(error => console.error('Error loading blog post:', error));
+    </script>
+
+</body>
+</html>
