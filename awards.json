@@ -47,6 +47,41 @@
       "url": "https://independent-photo.com/",
       "latestOpeningEntry": "https://independent-photo.com/competition/",
       "deadline": "October 31, 2024"      
+    },
+    {
+      "id": 8,
+      "name": "European Photo Awards",
+      "url": "https://europeanphotoawards.com/",
+      "latestOpeningEntry": "https://europeanphotoawards.com/european-photography-awards.php",
+      "deadline": "April 9, 2025"      
+    },
+    {
+      "id": 9,
+      "name": "Annual Photography Awards",
+      "url": "https://annualphotoawards.com/",
+      "latestOpeningEntry": "https://annualphotoawards.com/",
+      "deadline": "December 15, 2024"      
+    },
+    {
+      "id": 10,
+      "name": "Graphis International Photography Awards",
+      "url": "https://graphis.com/",
+      "latestOpeningEntry": "https://graphis.com/",
+      "deadline": "November 12, 2024"      
+    },
+    {
+      "id": 11,
+      "name": "PX3 Prix De LA Photographie Paris",
+      "url": "https://px3.fr/",
+      "latestOpeningEntry": "https://px3.fr/",
+      "deadline": "May 6, 2024"      
+    },
+    {
+      "id": 12,
+      "name": "IPhone Photography Awards",
+      "url": "https://www.ippawards.com/?v=a2a551a6458a",
+      "latestOpeningEntry": "https://www.ippawards.com/the-competition/?v=a2a551a6458a",
+      "deadline": "March 31, 2025"      
     }
 
 ]
