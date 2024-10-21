@@ -33,7 +33,7 @@
 
     <main>
         <article>
-            <img id="post-image" src="../blog-images/Sea.JPG" alt="Sample Photography" style="max-width:100%; height:auto; margin:20px 0;">
+            <img id="post-image" src="../blog-images/xxxx.jpeg" alt="Sample Photography" style="max-width:100%; height:auto; margin:20px 0;">
             <div id="basicMap"></div> <!-- The map container -->
         </article>
     </main>
@@ -64,8 +64,8 @@
         fetch('../posts/blog-posts.json')
             .then(response => response.json())
             .then(data => {
-                // Find the post for "Sea"
-                const post = data.posts.find(p => p.title === "Sea");
+                // Find the post for "xxxxx"
+                const post = data.posts.find(p => p.title === "xxxx");
 
                 if (post) {
                     // Update the page content with the post data

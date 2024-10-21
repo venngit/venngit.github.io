@@ -4,8 +4,12 @@
         "title": "Find The Light",
         "published": "21-10-2024",
         "image": "../blog-images/thelight.jpeg",
-        "link": "posts/The-Light.html",
-        "hasMap": false
+        "link": "posts/the-light.html",
+        "hasMap": true,
+        "mapCoordinates": {
+          "lon": -21.9879552,
+          "lat": 64.1474433
+        }
       },
       {
         "title": "Break Time",
