@@ -17,27 +17,9 @@
     </header>
 
     <main>
-        <section class="blog-list">
-            <!-- Latest Blog Post -->
-            <a href="posts/Break Time.html" class="blog-post" data-title="Break Time" data-published="18-10-2024" data-image="../blog-images/break time.jpg"></a>
-            
-            </a>
-
-            <!-- Blog Post -->
-            <a href="posts/Whisky and the Sun.html" class="blog-post" data-title="Whisky and the Sun" data-published="13-10-2024" data-image="../blog-images/Whisky and the Sun.jpeg">
-    
-            </a>
-
-            <!-- Blog Post -->
-            <a href="posts/Sea.html" class="blog-post" data-title="Sea" data-published="11-10-2024" data-image="../blog-images/Sea.JPG">
-                
-            </a>
-
-            <!-- Blog Post -->
-            <a href="posts/Road.html" class="blog-post" data-title="Road" data-published="11-10-2024" data-image="../blog-images/Road.JPG">
-    
-            </a>
-
+        <section id="blog-list" class="blog-list">
+            <!-- Blog posts will be inserted here dynamically -->
+        </section>
     </main>
 
     <footer>
@@ -53,60 +35,54 @@
     </footer>
 
 <script>
-    // Select all blog post links
-    const blogPosts = document.querySelectorAll('.blog-post');
+    // Fetch the blog posts JSON
+    fetch('./posts/blog-posts.json')
+        .then(response => response.json())
+        .then(data => {
+            const blogList = document.getElementById('blog-list');
 
-    blogPosts.forEach(post => {
-        // Get the publication date and title from data attributes
-        const publishedDate = post.getAttribute('data-published');
-        const title = post.getAttribute('data-title');
-        const imageSrc = post.getAttribute('data-image'); // New: Get the dynamic image source
+            // Sort posts by date (latest first)
+            data.posts.sort((a, b) => {
+                // Convert dates from DD-MM-YYYY to a comparable format (YYYY-MM-DD)
+                const dateA = new Date(a.published.split('-').reverse().join('-'));
+                const dateB = new Date(b.published.split('-').reverse().join('-'));
+                return dateB - dateA; // Sort in descending order (latest first)
+            });
 
-        // Format the date to "11, Oct, 2024"
-        const dateParts = publishedDate.split('-');
-        const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
+            // Dynamically create blog posts
+            data.posts.forEach(post => {
+                // Create blog post elements
+                const postLink = document.createElement('a');
+                postLink.href = post.link;
+                postLink.classList.add('blog-post');
+                postLink.dataset.title = post.title;
+                postLink.dataset.published = post.published;
+                postLink.dataset.image = post.image;
 
-        // Create title and date paragraph elements
-        const titleElement = document.createElement('p');
-        const dateElement = document.createElement('p');
-        const imgElement = document.createElement('img'); // New: Dynamically create an image element
+                const titleElement = document.createElement('p');
+                const dateElement = document.createElement('p');
+                const imgElement = document.createElement('img');
 
-        // Set the text content of the paragraphs
-        titleElement.className = 'source-code-pro-light'; // Add your desired class
-        titleElement.textContent = title; // Dynamic title from data attribute
-        titleElement.innerHTML = `<strong>${title}</strong>`; // Make the title bold using innerHTML
-        dateElement.className = 'source-code-pro-light date-published'; // Add class for styling
-        dateElement.textContent = formattedDate;
-        
-        imgElement.src = imageSrc; // Set the src attribute of the image
-        imgElement.alt = "Blog Post Image"; // You might want to make this dynamic too, depending on your needs
+                titleElement.className = 'source-code-pro-light';
+                titleElement.innerHTML = `<strong>${post.title}</strong>`;
 
-        // Insert the title and date elements to the left of the image
-        // Insert the elements into the blog post link
-        post.appendChild(titleElement);
-        post.appendChild(dateElement);
-        post.appendChild(imgElement);
-        post.insertBefore(dateElement, post.firstChild);
-        post.insertBefore(titleElement, dateElement);
+                // Format the date (e.g., 11, Oct, 2024)
+                const dateParts = post.published.split('-');
+                const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
+                dateElement.className = 'source-code-pro-light date-published';
+                dateElement.textContent = formattedDate;
 
-        // Get the image and adjust its size based on its natural size
-        const img = post.querySelector('img');
-        img.onload = function() {
-            const originalWidth = img.naturalWidth;
-            const maxDisplayWidth = 1020; // Define max display width
+                imgElement.src = post.image;
+                imgElement.alt = "Blog Post Image";
 
-            // Set image width based on original size
-            if (originalWidth < maxDisplayWidth) {
-                img.style.width = 'auto'; // Keep original size
-                img.style.maxWidth = 'none'; // Disable max width
-            } else {
-                img.style.width = '100%'; // Otherwise, make it responsive
-                img.style.height = 'auto'; // Maintain aspect ratio
-            }
-        };
-        
-        // Removed image title section
-    });
+                postLink.appendChild(titleElement);
+                postLink.appendChild(dateElement);
+                postLink.appendChild(imgElement);
+
+                blogList.appendChild(postLink);
+            });
+        })
+        .catch(error => console.error('Error loading blog posts:', error));
 </script>
 
 </body>

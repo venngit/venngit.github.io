@@ -1,0 +1,36 @@
+{
+    "posts": [
+      {
+        "title": "Break Time",
+        "published": "18-10-2024",
+        "image": "../blog-images/break time.jpg",
+        "link": "posts/Break Time.html",
+        "hasMap": false
+      },
+      {
+        "title": "Whisky and the Sun",
+        "published": "13-10-2024",
+        "image": "../blog-images/Whisky and the Sun.jpeg",
+        "link": "posts/Whisky and the Sun.html",
+        "hasMap": false
+      },
+      {
+        "title": "Sea",
+        "published": "11-10-2024",
+        "image": "../blog-images/Sea.JPG",
+        "link": "posts/Sea.html",
+        "hasMap": true,
+        "mapCoordinates": {
+          "lon": -21.9222846,
+          "lat": 64.1476306
+        }
+      },
+      {
+        "title": "Road",
+        "published": "11-10-2024",
+        "image": "../blog-images/Road.JPG",
+        "link": "posts/Road.html",
+        "hasMap": false
+      }
+    ]
+  }
