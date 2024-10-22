@@ -1,6 +1,13 @@
 {
     "posts": [
       {
+        "title": "Reykjavik Winter",
+        "published": "22-10-2024",
+        "image": "../blog-images/mountain-house.jpeg",
+        "link": "posts/reykjavik-winter.html",
+        "hasMap": false
+      },
+      {
         "title": "Find The Light",
         "published": "21-10-2024",
         "image": "../blog-images/thelight.jpeg",
