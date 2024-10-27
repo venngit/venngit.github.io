@@ -271,3 +271,20 @@ footer {
 .footer-links li a.photowards-link:hover {
     color: #dc7c5f; /* Optional: Change color on hover */
 }
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+.pagination-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+}
+.pagination-button.active {
+    font-weight: bold;
+    background-color: #666;
+    color: #fff;
+}

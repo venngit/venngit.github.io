@@ -20,6 +20,9 @@
         <section id="blog-list" class="blog-list">
             <!-- Blog posts will be inserted here dynamically -->
         </section>
+        <div id="pagination" class="pagination">
+            <!-- Pagination buttons will be inserted here -->
+        </div>
     </main>
 
     <footer>
@@ -34,52 +37,90 @@
     </footer>
 
 <script>
+    const postsPerPage = 5; // Number of posts per page
+    let currentPage = 1; // Track the current page
+
     // Fetch the blog posts JSON
     fetch('./posts/blog-posts.json')
         .then(response => response.json())
         .then(data => {
             const blogList = document.getElementById('blog-list');
+            const pagination = document.getElementById('pagination');
 
             // Sort posts by date (latest first)
             data.posts.sort((a, b) => {
-                // Convert dates from DD-MM-YYYY to a comparable format (YYYY-MM-DD)
                 const dateA = new Date(a.published.split('-').reverse().join('-'));
                 const dateB = new Date(b.published.split('-').reverse().join('-'));
-                return dateB - dateA; // Sort in descending order (latest first)
+                return dateB - dateA;
             });
 
-            // Dynamically create blog posts
-            data.posts.forEach(post => {
-                // Create blog post elements
-                const postLink = document.createElement('a');
-                postLink.href = post.link;
-                postLink.classList.add('blog-post');
-                postLink.dataset.title = post.title;
-                postLink.dataset.published = post.published;
-                postLink.dataset.image = post.image;
+            const totalPages = Math.ceil(data.posts.length / postsPerPage);
 
-                const titleElement = document.createElement('p');
-                const dateElement = document.createElement('p');
-                const imgElement = document.createElement('img');
+            function renderPosts(page) {
+                // Clear the current posts
+                blogList.innerHTML = '';
 
-                titleElement.className = 'source-code-pro-light';
-                titleElement.innerHTML = `<strong>${post.title}</strong>`;
+                // Calculate start and end index for posts on the current page
+                const start = (page - 1) * postsPerPage;
+                const end = start + postsPerPage;
 
-                // Format the date (e.g., 11, Oct, 2024)
-                const dateParts = post.published.split('-');
-                const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
-                dateElement.className = 'source-code-pro-light date-published';
-                dateElement.textContent = formattedDate;
+                // Slice the posts array to get the posts for the current page
+                const postsToDisplay = data.posts.slice(start, end);
 
-                imgElement.src = post.image;
-                imgElement.alt = "Blog Post Image";
+                // Create blog posts
+                postsToDisplay.forEach(post => {
+                    const postLink = document.createElement('a');
+                    postLink.href = post.link;
+                    postLink.classList.add('blog-post');
+                    postLink.dataset.title = post.title;
+                    postLink.dataset.published = post.published;
+                    postLink.dataset.image = post.image;
 
-                postLink.appendChild(titleElement);
-                postLink.appendChild(dateElement);
-                postLink.appendChild(imgElement);
+                    const titleElement = document.createElement('p');
+                    const dateElement = document.createElement('p');
+                    const imgElement = document.createElement('img');
 
-                blogList.appendChild(postLink);
-            });
+                    titleElement.className = 'source-code-pro-light';
+                    titleElement.innerHTML = `<strong>${post.title}</strong>`;
+
+                    const dateParts = post.published.split('-');
+                    const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
+                    dateElement.className = 'source-code-pro-light date-published';
+                    dateElement.textContent = formattedDate;
+
+                    imgElement.src = post.image;
+                    imgElement.alt = "Blog Post Image";
+
+                    postLink.appendChild(titleElement);
+                    postLink.appendChild(dateElement);
+                    postLink.appendChild(imgElement);
+
+                    blogList.appendChild(postLink);
+                });
+            }
+
+            function renderPagination() {
+                pagination.innerHTML = ''; // Clear existing pagination buttons
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.classList.add('pagination-button');
+                    if (i === currentPage) button.classList.add('active');
+
+                    button.addEventListener('click', () => {
+                        currentPage = i;
+                        renderPosts(currentPage);
+                        renderPagination();
+                    });
+
+                    pagination.appendChild(button);
+                }
+            }
+
+            // Initial rendering
+            renderPosts(currentPage);
+            renderPagination();
         })
         .catch(error => console.error('Error loading blog posts:', error));
 </script>
