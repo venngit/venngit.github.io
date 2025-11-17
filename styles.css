@@ -21,12 +21,27 @@ body {
     min-height: 100vh; /* Ensure it takes up at least the full viewport height */
 }
 
+:root {
+    --grid-gap: 8px; /* horizontal/vertical gap between tiles */
+    --row-unit: 12px; /* base row height used to compute spans (doubled for larger thumbs) */
+    --min-column: 400px; /* minimum column width (increased to make thumbnails bigger) */
+    /* Footer styling variables to keep footer consistent site-wide */
+    --footer-bg: #000;
+    --footer-color: #fff;
+    --footer-font-family: "Source Code Pro", monospace;
+    --footer-font-size: 0.9rem;
+}
+
 /* Ensure main content takes up the remaining space */
+
 main {
-    flex: 1; /* This allows the main content to expand and push the footer down */
-    max-width: 1020px;
-    margin: 40px auto;
-    padding: 0 20px;
+    flex: 1;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 header {
@@ -59,40 +74,93 @@ header p {
 }
 
 /* Blog List */
+
+/* Collage-style grid for blog list */
 .blog-list {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(var(--min-column), 1fr));
+    gap: var(--grid-gap);
+    width: 100vw;
+    margin: 0;
+    justify-items: stretch;
+    align-items: start;
+    grid-auto-rows: var(--row-unit); /* small row unit used to compute spans */
 }
 
 .blog-post {
-    text-align: left;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    display: block;
+    min-height: unset;
+    position: relative;
+    padding: 0;
 }
 
 .blog-list a {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     text-decoration: none;
     color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.blog-list a p {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: #777;
-}
 
 .blog-list a img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    /* show the full image instead of cropping */
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s, opacity 0.3s;
+    display: block;
+    background: #eee;
+}
+
+/* Loading placeholder + fade-in */
+.blog-list a img {
+    opacity: 0;
+    transform: scale(1.02);
+    transition: opacity 360ms ease, transform 360ms ease;
+    background-image: linear-gradient(90deg, #eee 0%, #f6f6f6 50%, #eee 100%);
+    background-size: 200% 100%;
+    animation: placeholderShimmer 1.2s linear infinite;
+}
+
+.blog-list a img.loaded {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    background-image: none;
+}
+
+@keyframes placeholderShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Featured (newest) post spans 2 columns on wider screens */
+.blog-post.featured {
+    grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+    /* On smaller screens, featured tiles shouldn't span 2 columns */
+    .blog-post.featured { grid-column: span 1; }
+    :root { --min-column: 160px; }
 }
 
 .blog-list a img:hover {
-    transform: scale(1.01);
+    transform: scale(1.03);
+    z-index: 2;
+}
+
+
+
+.blog-post:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
 }
 
 .image-title {
@@ -189,12 +257,13 @@ header p {
 /* Footer Styles */
 footer {
     padding: 20px;
-    font-size: 0.9rem;
-    background-color: #3e3939;
+    font-size: var(--footer-font-size);
+    background-color: var(--footer-bg);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #fff;
+    color: var(--footer-color);
     margin-top: 40px;
+    font-family: var(--footer-font-family);
 }
 
 .footer-links {
@@ -215,6 +284,12 @@ footer {
 
 .footer-links a:hover {
     color: #848484;
+}
+
+/* Highlight the current page link in the footer */
+.footer-links a.footer-current {
+    font-weight: 700;
+    color: #fff; /* ensure good contrast on the dark footer */
 }
 
 /* Map Styles */

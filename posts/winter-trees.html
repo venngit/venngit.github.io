@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../post.css">
 </head>
 <body>
     <header>
@@ -21,7 +22,7 @@
 
     <main>
         <article>
-            <img id="post-image" src="../blog-images/winter-trees.JPG" alt="Sample Photography" style="max-width:100%; height:auto; margin:20px 0;">
+            <img id="post-image" src="../blog-images/winter-trees-1.jpg" alt="Sample Photography" style="max-width:100%; height:auto; margin:20px 0;">
         </article>
     </main>
 
@@ -57,8 +58,22 @@
                     // Update the page content with the post data
                     document.getElementById('post-title').textContent = post.title;
                     document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
-                    document.getElementById('post-image').src = post.image;
-                    document.getElementById('post-image').alt = post.title;
+                    const postImgEl = document.getElementById('post-image');
+                    postImgEl.src = post.image;
+                    postImgEl.alt = post.title;
+
+                    // Enlarge landscape images on load
+                    const applyEnlarge = () => {
+                        if (!postImgEl.naturalWidth) return;
+                        const aspect = postImgEl.naturalWidth / postImgEl.naturalHeight;
+                        if (aspect > 1.3) {
+                            postImgEl.classList.add('landscape-enlarge');
+                        } else {
+                            postImgEl.classList.remove('landscape-enlarge');
+                        }
+                    };
+                    postImgEl.addEventListener('load', applyEnlarge);
+                    if (postImgEl.complete && postImgEl.naturalWidth) applyEnlarge();
                 } else {
                     document.getElementById('post-title').textContent = "Post not found";
                     document.getElementById('post-date').textContent = "";
@@ -68,5 +83,7 @@
             .catch(error => console.error('Error loading blog post:', error));
     </script>
 
+</body>
+<script src="/scripts/highlight-footer.js"></script>
 </body>
 </html>

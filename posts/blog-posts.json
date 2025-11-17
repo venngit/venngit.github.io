@@ -1,75 +1,184 @@
 {
-    "posts": [
-      {
-        "title": "Whisky and the Gaze",
-        "published": "17-11-2025",
-        "image": "../blog-images/whisky-bw-raw.JPG",
-        "link": "posts/whisky-and-the-gaze. html",
-        "hasMap": false
+  "posts": [
+    {
+      "title": "Whisky and the Gaze",
+      "published": "17-11-2025",
+      "image": "../blog-images/whisky-bw-raw-1.jpg",
+      "link": "posts/whisky-and-the-gaze.html",
+      "hasMap": false,
+      "featured": true,
+      "thumb": "../blog-images/thumbs/whisky-bw-raw-1-800.jpg",
+      "hero": "../blog-images/thumbs/whisky-bw-raw-1-1600.jpg"
+    },
+    {
+      "title": "Abandoned Vaccum",
+      "published": "17-11-2025",
+      "image": "../blog-images/abandoned-vaccum.jpg",
+      "link": "posts/abandoned-vaccum.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/abandoned-vaccum-800.jpg",
+      "hero": "../blog-images/thumbs/abandoned-vaccum-1600.jpg"
+    },
+    {
+      "title": "Forest",
+      "published": "17-11-2025",
+      "image": "../blog-images/forest-1.jpg",
+      "link": "posts/forest.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/forest-1-800.jpg",
+      "hero": "../blog-images/thumbs/forest-1-1600.jpg"
+    },
+    {
+      "title": "Geothermal",
+      "published": "17-11-2025",
+      "image": "../blog-images/geothermal-1.jpg",
+      "link": "posts/geothermal.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/geothermal-1-800.jpg",
+      "hero": "../blog-images/thumbs/geothermal-1-1600.jpg"
+    },
+    {
+      "title": "Hike",
+      "published": "17-11-2025",
+      "image": "../blog-images/hike-1.jpg",
+      "link": "posts/hike.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/hike-1-800.jpg",
+      "hero": "../blog-images/thumbs/hike-1-1600.jpg"
+    },
+    {
+      "title": "Hike 2",
+      "published": "17-11-2025",
+      "image": "../blog-images/hike-2.jpg",
+      "link": "posts/hike-2.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/hike-2-800.jpg",
+      "hero": "../blog-images/thumbs/hike-2-1600.jpg"
+    },
+    {
+      "title": "Icelandic House",
+      "published": "17-11-2025",
+      "image": "../blog-images/icelandic-house.jpg",
+      "link": "posts/icelandic-house.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/icelandic-house-800.jpg",
+      "hero": "../blog-images/thumbs/icelandic-house-1600.jpg"
+    },
+    {
+      "title": "Long Walk",
+      "published": "17-11-2025",
+      "image": "../blog-images/long-walk.jpg",
+      "link": "posts/long-walk.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/long-walk-800.jpg",
+      "hero": "../blog-images/thumbs/long-walk-1600.jpg"
+    },
+    {
+      "title": "Man and the Sea",
+      "published": "17-11-2025",
+      "image": "../blog-images/man-and-the-sea.jpg",
+      "link": "posts/man-and-the-sea.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/man-and-the-sea-800.jpg",
+      "hero": "../blog-images/thumbs/man-and-the-sea-1600.jpg"
+    },
+    {
+      "title": "Never Sunset",
+      "published": "17-11-2025",
+      "image": "../blog-images/never-sunset.jpg",
+      "link": "posts/never-sunset.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/never-sunset-800.jpg",
+      "hero": "../blog-images/thumbs/never-sunset-1600.jpg"
+    },
+    {
+      "title": "Pupil",
+      "published": "17-11-2025",
+      "image": "../blog-images/pupil-1.jpg",
+      "link": "posts/pupil.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/pupil-1-800.jpg",
+      "hero": "../blog-images/thumbs/pupil-1-1600.jpg"
+    },
+    {
+      "title": "Winter Trees",
+      "published": "26-11-2024",
+      "image": "../blog-images/winter-trees-1.jpg",
+      "link": "posts/winter-trees.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/winter-trees-1-800.jpg",
+      "hero": "../blog-images/thumbs/winter-trees-1-1600.jpg"
+    },
+    {
+      "title": "Winter Tree",
+      "published": "27-10-2024",
+      "image": "../blog-images/winter-tree.jpeg",
+      "link": "posts/winter-tree.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/winter-tree-800.jpg",
+      "hero": "../blog-images/thumbs/winter-tree-1600.jpg"
+    },
+    {
+      "title": "Reykjavik Winter",
+      "published": "22-10-2024",
+      "image": "../blog-images/mountain-house.jpeg",
+      "link": "posts/reykjavik-winter.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/mountain-house-800.jpg",
+      "hero": "../blog-images/thumbs/mountain-house-1600.jpg"
+    },
+    {
+      "title": "Find The Light",
+      "published": "21-10-2024",
+      "image": "../blog-images/thelight.jpeg",
+      "link": "posts/the-light.html",
+      "hasMap": true,
+      "mapCoordinates": {
+        "lon": -21.9879552,
+        "lat": 64.1474433
       },
-      {
-        "title": "Winter Trees",
-        "published": "26-11-2024",
-        "image": "../blog-images/winter-trees.JPG",
-        "link": "posts/winter-trees.html",
-        "hasMap": false
+      "thumb": "../blog-images/thumbs/thelight-800.jpg",
+      "hero": "../blog-images/thumbs/thelight-1600.jpg"
+    },
+    {
+      "title": "Break Time",
+      "published": "18-10-2024",
+      "image": "../blog-images/break-time.jpg",
+      "link": "posts/Break Time.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/break-time-800.jpg",
+      "hero": "../blog-images/thumbs/break-time-1600.jpg"
+    },
+    {
+      "title": "Whisky and the Sun",
+      "published": "13-10-2024",
+      "image": "../blog-images/whisky-and-the-sun.jpeg",
+      "link": "posts/Whisky and the Sun.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/whisky-and-the-sun-800.jpg",
+      "hero": "../blog-images/thumbs/whisky-and-the-sun-1600.jpg"
+    },
+    {
+      "title": "Sea",
+      "published": "11-10-2024",
+      "image": "../blog-images/sea-1.jpg",
+      "link": "posts/Sea.html",
+      "hasMap": true,
+      "mapCoordinates": {
+        "lon": -21.9222846,
+        "lat": 64.1476306
       },
-      {
-        "title": "Winter Tree",
-        "published": "27-10-2024",
-        "image": "../blog-images/winter-tree.jpeg",
-        "link": "posts/winter-tree.html",
-        "hasMap": false
-      },
-      {
-        "title": "Reykjavik Winter",
-        "published": "22-10-2024",
-        "image": "../blog-images/mountain-house.jpeg",
-        "link": "posts/reykjavik-winter.html",
-        "hasMap": false
-      },
-      {
-        "title": "Find The Light",
-        "published": "21-10-2024",
-        "image": "../blog-images/thelight.jpeg",
-        "link": "posts/the-light.html",
-        "hasMap": true,
-        "mapCoordinates": {
-          "lon": -21.9879552,
-          "lat": 64.1474433
-        }
-      },
-      {
-        "title": "Break Time",
-        "published": "18-10-2024",
-        "image": "../blog-images/break time.jpg",
-        "link": "posts/Break Time.html",
-        "hasMap": false
-      },
-      {
-        "title": "Whisky and the Sun",
-        "published": "13-10-2024",
-        "image": "../blog-images/Whisky and the Sun.jpeg",
-        "link": "posts/Whisky and the Sun.html",
-        "hasMap": false
-      },
-      {
-        "title": "Sea",
-        "published": "11-10-2024",
-        "image": "../blog-images/Sea.JPG",
-        "link": "posts/Sea.html",
-        "hasMap": true,
-        "mapCoordinates": {
-          "lon": -21.9222846,
-          "lat": 64.1476306
-        }
-      },
-      {
-        "title": "Road",
-        "published": "11-10-2024",
-        "image": "../blog-images/Road.JPG",
-        "link": "posts/Road.html",
-        "hasMap": false
-      }
-    ]
-  }
+      "thumb": "../blog-images/thumbs/sea-1-800.jpg",
+      "hero": "../blog-images/thumbs/sea-1-1600.jpg"
+    },
+    {
+      "title": "Road",
+      "published": "11-10-2024",
+      "image": "../blog-images/road-1.jpg",
+      "link": "posts/Road.html",
+      "hasMap": false,
+      "thumb": "../blog-images/thumbs/road-1-800.jpg",
+      "hero": "../blog-images/thumbs/road-1-1600.jpg"
+    }
+  ]
+}
