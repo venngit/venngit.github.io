@@ -37,8 +37,7 @@
     </footer>
 
 <script>
-    const postsPerPage = 5; // Number of posts per page
-    let currentPage = 1; // Track the current page
+    // Show all posts on one page
 
     // Fetch the blog posts JSON
     fetch('./posts/blog-posts.json')
@@ -54,76 +53,137 @@
                 return dateB - dateA;
             });
 
-            const totalPages = Math.ceil(data.posts.length / postsPerPage);
+            // Show all posts, no pagination
+            blogList.innerHTML = '';
+            data.posts.forEach((post, idx) => {
+                const postLink = document.createElement('a');
+                postLink.href = post.link;
+                postLink.classList.add('blog-post');
+                postLink.dataset.title = post.title;
+                postLink.dataset.published = post.published;
+                postLink.dataset.image = post.image;
 
-            function renderPosts(page) {
-                // Clear the current posts
-                blogList.innerHTML = '';
-
-                // Calculate start and end index for posts on the current page
-                const start = (page - 1) * postsPerPage;
-                const end = start + postsPerPage;
-
-                // Slice the posts array to get the posts for the current page
-                const postsToDisplay = data.posts.slice(start, end);
-
-                // Create blog posts
-                postsToDisplay.forEach(post => {
-                    const postLink = document.createElement('a');
-                    postLink.href = post.link;
-                    postLink.classList.add('blog-post');
-                    postLink.dataset.title = post.title;
-                    postLink.dataset.published = post.published;
-                    postLink.dataset.image = post.image;
-
-                    const titleElement = document.createElement('p');
-                    const dateElement = document.createElement('p');
-                    const imgElement = document.createElement('img');
-
-                    titleElement.className = 'source-code-pro-light';
-                    titleElement.innerHTML = `<strong>${post.title}</strong>`;
-
-                    const dateParts = post.published.split('-');
-                    const formattedDate = `${dateParts[0]}, ${new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`))}, ${dateParts[2]}`;
-                    dateElement.className = 'source-code-pro-light date-published';
-                    dateElement.textContent = formattedDate;
-
-                    imgElement.src = post.image;
-                    imgElement.alt = "Blog Post Image";
-
-                    postLink.appendChild(titleElement);
-                    postLink.appendChild(dateElement);
-                    postLink.appendChild(imgElement);
-
-                    blogList.appendChild(postLink);
-                });
-            }
-
-            function renderPagination() {
-                pagination.innerHTML = ''; // Clear existing pagination buttons
-
-                for (let i = 1; i <= totalPages; i++) {
-                    const button = document.createElement('button');
-                    button.textContent = i;
-                    button.classList.add('pagination-button');
-                    if (i === currentPage) button.classList.add('active');
-
-                    button.addEventListener('click', () => {
-                        currentPage = i;
-                        renderPosts(currentPage);
-                        renderPagination();
-                    });
-
-                    pagination.appendChild(button);
+                // Mark the newest (first) post as featured to span 2 columns
+                if (idx === 0) {
+                    postLink.classList.add('featured');
+                    // set explicit column span before calculating rows
+                    postLink.style.gridColumnEnd = 'span 2';
                 }
-            }
 
-            // Initial rendering
-            renderPosts(currentPage);
-            renderPagination();
+                // Image only, no text
+                const imgElement = document.createElement('img');
+                // Use generated thumbnail on the index if available, otherwise fall back to the full image
+                imgElement.src = post.thumb || post.image;
+                // Keep original image path for possible future use
+                imgElement.dataset.full = post.image;
+                imgElement.alt = post.title;
+                imgElement.loading = 'lazy';
+                postLink.appendChild(imgElement);
+
+                // Append before measuring so CSS grid spans/columns apply
+                blogList.appendChild(postLink);
+
+                // If this post is marked featured in JSON, apply class (preferred over idx)
+                if (post.featured) {
+                    postLink.classList.add('featured');
+                    postLink.style.gridColumnEnd = 'span 2';
+                }
+
+                // When each image loads, add loaded class and compute grid-row span
+                const onImageLoaded = () => {
+                    imgElement.classList.add('loaded');
+                    // Give landscape images a larger column span first,
+                    // then recalculate row spans after layout updates so heights match the final width.
+                    applyLandscapeSpan(postLink, imgElement);
+                    // Wait for layout to settle so item.clientWidth reflects the span change
+                    requestAnimationFrame(() => requestAnimationFrame(() => resizeGridItem(postLink)));
+                };
+
+                imgElement.addEventListener('load', onImageLoaded);
+                // If image is cached and already complete, call handler immediately
+                if (imgElement.complete && imgElement.naturalWidth) {
+                    onImageLoaded();
+                }
+            });
+
+            // Recalculate spans when all images are likely loaded (in case some were cached)
+            window.setTimeout(() => resizeAllGridItems(), 200);
+
+            // Recalculate spans on resize (debounced)
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => resizeAllGridItems(), 150);
+            });
+            pagination.innerHTML = '';
         })
         .catch(error => console.error('Error loading blog posts:', error));
+
+            // Helper to compute grid row span for an item based on its image aspect ratio
+            function resizeGridItem(item) {
+                const grid = document.querySelector('.blog-list');
+                if (!grid) return;
+                const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+                const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
+                const img = item.querySelector('img');
+                if (!img || !img.naturalWidth) return;
+
+                // Compute rendered image height at current item width
+                const itemWidth = item.clientWidth;
+                const renderedHeight = (img.naturalHeight / img.naturalWidth) * itemWidth;
+
+                const rowSpan = Math.ceil((renderedHeight + rowGap) / (rowHeight + rowGap));
+                item.style.gridRowEnd = 'span ' + rowSpan;
+            }
+
+            function resizeAllGridItems() {
+                    const items = document.querySelectorAll('.blog-post');
+                    items.forEach(item => {
+                        // preserve featured explicit spans
+                        if (!item.classList.contains('featured')) {
+                            item.style.gridColumnEnd = '';
+                        }
+                        const img = item.querySelector('img');
+                        if (img) {
+                            // apply landscape span first then recalc the rows
+                            applyLandscapeSpan(item, img);
+                            // layout may change; compute rows after layout
+                            requestAnimationFrame(() => resizeGridItem(item));
+                        } else {
+                            resizeGridItem(item);
+                        }
+                    });
+            }
+
+                // Returns number of columns currently in the CSS grid
+                function getGridColumnCount() {
+                    const grid = document.querySelector('.blog-list');
+                    if (!grid) return 1;
+                    const cols = window.getComputedStyle(grid).getPropertyValue('grid-template-columns');
+                    if (!cols) return 1;
+                    return cols.split(' ').filter(c => c.trim().length).length;
+                }
+
+                // If an image is landscape (wider than tall), give it a larger column span
+                // but only when there are at least 2 columns available. Do not override featured.
+                function applyLandscapeSpan(item, img) {
+                    if (!img || !img.naturalWidth) return;
+                    if (item.classList.contains('featured')) return; // don't override featured
+
+                    const aspect = img.naturalWidth / img.naturalHeight;
+                    const cols = getGridColumnCount();
+
+                    // Thresholds: mild landscape -> span 2 if >=2 cols; very wide -> span 2 (avoid huge spans)
+                    if (cols >= 2 && aspect > 1.3) {
+                        const span = Math.min(2, cols);
+                        item.style.gridColumnEnd = 'span ' + span;
+                    } else {
+                        item.style.gridColumnEnd = '';
+                    }
+                }
 </script>
 
+</body>
+<script src="/scripts/highlight-footer.js"></script>
 </body>
 </html>

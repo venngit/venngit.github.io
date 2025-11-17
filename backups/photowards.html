@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photowards</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="source-code-pro-regular"><b>Photowards</b></h1>
+        <p class="source-code-pro-light">A lens on all photography awards.</p>
+        <!-- <p class="updated-weekly-text source-code-pro-light"></p> -->
+    </header>
+
+    <main>
+        <div class="last-update">
+            <p>Most Likely Updated Weekly / Last Update: 18 Oct 2024</p>
+        </div>
+    
+        <div class="awards-container">
+            <ul class="award-list" id="award-list">
+                <!-- Awards will be dynamically added here -->
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p class="source-code-pro-light">&copy; 2024 Long Winter Project</p>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="index.html" class="source-code-pro-light">Home</a></li>
+                <li><a href="about.html" class="source-code-pro-light">About</a></li>
+                <li><a href="contact.html" class="source-code-pro-light">Contact</a></li>
+                <li><a href="photowards.html" class="source-code-pro-light photowards-link">Photowards</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        // Load the awards data from the JSON file
+        fetch('awards.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                const awards = data;
+
+                // Helper function to check if the deadline has passed
+                function isExpired(deadline) {
+                    const currentDate = new Date();
+                    const deadlineDate = new Date(deadline);
+                    return deadlineDate < currentDate;
+                }
+
+                // Function to render the awards list
+                function renderAwards() {
+                    const awardList = document.getElementById('award-list');
+                    awardList.innerHTML = '';
+
+                    awards.forEach(award => {
+                        const awardItem = document.createElement('li');
+                        awardItem.classList.add('award-item');
+
+                        // Create the award link
+                        const awardLink = document.createElement('a');
+                        awardLink.href = award.url;
+                        awardLink.classList.add('award-link');
+                        awardLink.target = "_blank";
+                        awardLink.innerText = award.name;
+
+                        // Create the latest opening entry and deadline section
+                        const latestOpeningEntrySection = document.createElement('div');
+                        latestOpeningEntrySection.classList.add('entry-deadline-section');
+
+                        const latestOpeningEntryLink = document.createElement('a');
+                        latestOpeningEntryLink.href = award.latestOpeningEntry;
+                        latestOpeningEntryLink.classList.add('latest-opening-entry-link');
+                        latestOpeningEntryLink.target = "_blank";
+                        latestOpeningEntryLink.innerText = 'Current Opening';
+
+                        const deadlineText = document.createElement('span');
+                        deadlineText.classList.add('deadline-text');
+
+                        if (isExpired(award.deadline)) {
+                            deadlineText.classList.add('deadline-expired');
+                        } else {
+                            deadlineText.classList.add('deadline-active');
+                        }
+
+                        deadlineText.innerText = `Deadline: ${award.deadline}`;
+
+                        latestOpeningEntrySection.appendChild(latestOpeningEntryLink);
+                        latestOpeningEntrySection.appendChild(deadlineText);
+
+                        awardItem.appendChild(awardLink);
+                        awardItem.appendChild(latestOpeningEntrySection);
+                        awardList.appendChild(awardItem);
+                    });
+                }
+
+                // Initial rendering of the awards
+                renderAwards();
+            })
+            .catch(error => console.error('Error loading awards data:', error));
+    </script>
+
+</body>
+</html>

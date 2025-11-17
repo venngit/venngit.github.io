@@ -1,0 +1,98 @@
+/* Post-specific styles (overrides for single-post pages) */
+
+/* Constrain the article width for comfortable reading */
+article {
+    max-width: 980px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+/* Ensure post image fits the available width but doesn't exceed viewport height */
+#post-image,
+article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80vh; /* Prevent images from being taller than the viewport */
+    object-fit: contain;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* If you have inline large images inside content, limit their width too */
+article img.inline-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Improve header spacing on post pages */
+header {
+    padding: 28px 16px;
+}
+
+/* Make the footer less dominant on post pages */
+footer {
+    padding: 16px;
+}
+
+/* Make map container responsive */
+#basicMap {
+    max-width: 100%;
+    height: 400px;
+    margin: 12px auto 40px auto;
+}
+
+/* Typographic niceties for post body */
+article p {
+    line-height: 1.65;
+    color: #222;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Reduce header title size in post pages */
+header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 700px) {
+    article {
+        padding: 0 12px;
+    }
+    #post-image {
+        max-height: 60vh;
+    }
+}
+
+/* Enlarge landscape images on single-post pages by scaling (keeps image centered reliably) */
+:root {
+    --post-image-max-width: 1200px; /* maximum displayed width for enlarged images */
+    --post-image-side-gap: 200px; /* space to leave at sides on very wide screens */
+}
+
+/* Center a wider-than-article image by positioning it and translating -50% */
+#post-image.landscape-enlarge {
+    /* choose an explicit display width but constrain to viewport */
+    width: min(var(--post-image-max-width), calc(100vw - var(--post-image-side-gap))) !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    margin: 20px 0 !important;
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 180ms ease, transform 180ms ease;
+}
+
+@media (max-width: 900px) {
+    /* On smaller screens keep normal sizing */
+    #post-image.landscape-enlarge {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
