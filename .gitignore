@@ -1,0 +1,26 @@
+/data
+/uploads
+/node_modules
+.env
+
+# Raw/original images (don't push high-res originals)
+raw-images/
+raw-*
+
+# Tool outputs / maps
+tools/process-map.json
+tools/rename-map.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Optional local configs
+.env.local
