@@ -1,0 +1,11 @@
+#!/bin/sh
+# Optional pre-commit hook to run the validator locally
+# To enable: git config core.hooksPath .githooks
+
+python tools/ci_validate.py --json posts/blog-posts.json --warn-only
+rc=$?
+if [ $rc -ne 0 ]; then
+  echo "Validator found problems. Commit aborted. (Run with --warn-only to only warn.)"
+  exit $rc
+fi
+exit 0

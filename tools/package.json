@@ -1,0 +1,10 @@
+{
+  "name": "venngit-site-tools",
+  "version": "0.1.0",
+  "description": "Utility scripts for venngit.github.io",
+  "license": "MIT",
+  "dependencies": {
+    "image-size": "^1.0.2",
+    "photowards-backend": "file:.."
+  }
+}
