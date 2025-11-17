@@ -11,6 +11,9 @@ raw-*
 tools/process-map.json
 tools/rename-map.json
 
+# Node modules for tools (should not be committed)
+tools/node_modules/
+
 # Python
 __pycache__/
 *.py[cod]
