@@ -1,6 +1,13 @@
 {
     "posts": [
       {
+        "title": "Whisky and the Gaze",
+        "published": "17-11-2025",
+        "image": "../blog-images/whisky-bw-raw.JPG",
+        "link": "posts/whisky-and-the-gaze. html",
+        "hasMap": false
+      },
+      {
         "title": "Winter Trees",
         "published": "26-11-2024",
         "image": "../blog-images/winter-trees.JPG",
