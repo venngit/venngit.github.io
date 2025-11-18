@@ -1,5 +1,47 @@
 <!DOCTYPE HTML>
-    <nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mono is More - Abandoned Vaccum</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../post.css">
+    <style type="text/css">
+      html, body {
+          margin: 0;
+          padding: 0;
+      }
+      #basicMap {
+          width: 100%;
+          height: 400px; /* Set a fixed height for the map */
+          display: none; /* Hidden by default; post-meta.js will show if needed */
+      }
+    </style>
+    <script src="https://openlayers.org/en/v6.15.1/build/ol.js"></script>
+</head>
+<body>
+    <header>
+        <h2 id="post-title">Loading Post...</h2>
+        <br>
+        <p id="post-date">Published on DATE</p>
+        <br>
+        <p><a href="../index.html">Back to Home</a></p>
+    </header>
+
+    <main>
+        <article>
+            <img id="post-image" src="../blog-images/abandoned-vaccum.jpg" alt="Abandoned Vaccum" style="max-width:100%; height:auto; margin:20px 0;">
+            <div id="basicMap"></div> <!-- The map container -->
+        </article>
+    </main>
+
+    <footer>
+        <p class="source-code-pro-light">&copy; 2024-2025 Long Winter Project</p>
+        <nav>
             <ul class="footer-links">
                 <li><a href="../index.html" class="source-code-pro-light">Home</a></li>
                 <li><a href="../contact.html" class="source-code-pro-light">Contact</a></li>
@@ -54,7 +96,7 @@
         }
     </script>
 
-        <script src="/scripts/post-meta.js"></script>
+    <script src="/scripts/post-meta.js"></script>
     <script src="/scripts/highlight-footer.js"></script>
 </body>
-    </html>
+</html>
