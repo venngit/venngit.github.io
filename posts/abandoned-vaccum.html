@@ -1,46 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mono is More - Abandoned Vaccum</title>
-    <link rel="icon" type="image/x-icon" href="../favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../post.css">
-    <style type="text/css">
-      html, body {
-          margin: 0;
-          padding: 0;
-      }
-      #basicMap {
-          width: 100%;
-          height: 400px; /* Set a fixed height for the map */
-          display: none; /* Hidden by default */
-      }
-    </style>
-    <script src="https://openlayers.org/en/v6.15.1/build/ol.js"></script>
-</head>
-<body>
-    <header>
-        <h2 id="post-title">Loading Post...</h2>
-        <br>
-        <p id="post-date">Published on DATE</p>
-        <br>
-        <p><a href="../index.html">Back to Home</a></p>
-    </header>
-
-    <main>
-        <article>
-            <img id="post-image" src="../blog-images/abandoned-vaccum.jpg" alt="Abandoned Vaccum" style="max-width:100%; height:auto; margin:20px 0;">
-            <div id="basicMap"></div> <!-- The map container -->
-        </article>
-    </main>
-
-    <footer>
-        <p class="source-code-pro-light">&copy; 2024-2025 Long Winter Project</p>
+    <script src="/scripts/post-meta.js"></script>
         <nav>
             <ul class="footer-links">
                 <li><a href="../index.html" class="source-code-pro-light">Home</a></li>
@@ -51,47 +10,7 @@
     </footer>
 
     <script>
-        // Function to format the date as "dd mm yyyy"
-        function formatDate(dateString) {
-            const dateParts = dateString.split('-');
-            const day = dateParts[0];
-            const month = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`).toLocaleString('en-US', { month: 'short' });
-            const year = dateParts[2];
-            return `${day} ${month} ${year}`;
-        }
-
-        // Fetch the blog posts JSON
-        fetch('../posts/blog-posts.json')
-            .then(response => response.json())
-            .then(data => {
-                // Find the post for "Abandoned Vaccum"
-                const post = data.posts.find(p => p.title === "Abandoned Vaccum");
-
-                if (post) {
-                    // Update the page content with the post data
-                    document.getElementById('post-title').textContent = post.title;
-                    document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
-                    document.getElementById('post-image').src = post.image;
-                    document.getElementById('post-image').alt = post.title;
-
-                    // If the post has a map, display it
-                    if (post.hasMap) {
-                        document.getElementById('basicMap').style.display = 'block'; // Show the map
-
-                        // Wait for a short delay to ensure the map container is visible before initializing the map
-                        setTimeout(() => {
-                            const coordinates = [post.mapCoordinates.lon, post.mapCoordinates.lat];
-                            initMap(coordinates); // Initialize the map with the coordinates
-                        }, 100); // Delay initialization for map rendering
-                    }
-                } else {
-                    document.getElementById('post-title').textContent = "Post not found";
-                    document.getElementById('post-date').textContent = "";
-                    document.getElementById('post-image').style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error loading blog post:', error));
-
+        // Generic initMap retained so posts using maps work with shared loader.
         function initMap(coordinates) {
             const pinCoordinates = ol.proj.fromLonLat(coordinates);
 
@@ -132,10 +51,11 @@
 
             map.addLayer(vectorLayer);
             map.getView().setCenter(pinCoordinates);
-            map.getView().setZoom(18); // Closer zoom level for a more focused view
+            map.getView().setZoom(18);
         }
     </script>
-</body>
-<script src="/scripts/highlight-footer.js"></script>
-</body>
-</html>
+
+    <script src="/scripts/post-meta.js"></script>
+    <script src="/scripts/highlight-footer.js"></script>
+    </body>
+    </html>

@@ -41,44 +41,7 @@
         </nav>
     </footer>
 
-    <script>
-        // Function to format the date as "18 Oct 2024"
-        function formatDate(dateString) {
-            const dateParts = dateString.split('-');
-            const day = dateParts[0];
-            const month = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`).toLocaleString('en-US', { month: 'short' });
-            const year = dateParts[2];
-            return `${day} ${month} ${year}`;
-        }
-
-        // Fetch the blog posts JSON
-        fetch('../posts/blog-posts.json')
-            .then(response => response.json())
-            .then(data => {
-                // Find the post for "Break Time"
-                const post = data.posts.find(p => p.title === "Break Time");
-
-                if (post) {
-                    // Update the page content with the post data
-                    document.getElementById('post-title').textContent = post.title;
-                    document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
-                    document.getElementById('post-image').src = post.image;
-                    document.getElementById('post-image').alt = post.title;
-
-                    // Add the original content and caption
-                    const originalContent = "A man taking a cigarette break by the window.";
-                    document.getElementById('post-content').textContent = originalContent;
-
-                    const caption = "Taken in Jioufen, New Taipei City, Taiwan, by Vayan, in March 2023";
-                    document.getElementById('post-caption').textContent = caption;
-                } else {
-                    document.getElementById('post-title').textContent = "Post not found";
-                    document.getElementById('post-date').textContent = "";
-                    document.getElementById('post-image').style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error loading blog post:', error));
-    </script>
+    <script src="/scripts/post-meta.js"></script>
 
 </body>
 <script src="/scripts/highlight-footer.js"></script>
