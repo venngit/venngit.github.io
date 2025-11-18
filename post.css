@@ -2,7 +2,8 @@
 
 /* Constrain the article width for comfortable reading (increased for HD images) */
 article {
-    max-width: 1600px;
+    /* Further increased to accommodate very wide HD images on single-post pages */
+    max-width: 2200px;
     margin: 24px auto;
     padding: 0 16px;
 }
@@ -13,7 +14,7 @@ article img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 80vh; /* Prevent images from being taller than the viewport */
+    max-height: 95vh; /* Allow taller images on large viewports while still preventing overflow */
     object-fit: contain;
     margin: 20px auto;
     border-radius: 6px;
@@ -68,9 +69,9 @@ header h2 {
 
 /* Enlarge landscape images on single-post pages by scaling (keeps image centered reliably) */
 :root {
-    /* Increased limits so single-post images can display larger for HD photos */
-    --post-image-max-width: 2400px; /* maximum displayed width for enlarged images */
-    --post-image-side-gap: 160px; /* space to leave at sides on very wide screens */
+    /* Further increased limits for very high-resolution displays; adjust if layout feels too wide */
+    --post-image-max-width: 3200px; /* maximum displayed width for enlarged images */
+    --post-image-side-gap: 120px; /* smaller side gap to gain more display area on wide screens */
 }
 
 /* Center a wider-than-article image by positioning it and translating -50% */
@@ -79,7 +80,7 @@ header h2 {
     width: min(var(--post-image-max-width), calc(100vw - var(--post-image-side-gap))) !important;
     max-width: none !important;
     height: auto !important;
-    max-height: 90vh !important;
+    max-height: 95vh !important;
     margin: 20px 0 !important;
     display: block;
     position: relative;
