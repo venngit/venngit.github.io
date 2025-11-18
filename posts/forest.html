@@ -51,69 +51,7 @@
     </footer>
 
     <script>
-        // Function to format the date as "dd mm yyyy"
-        function formatDate(dateString) {
-            const dateParts = dateString.split('-');
-            const day = dateParts[0];
-            const month = new Date(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`).toLocaleString('en-US', { month: 'short' });
-            const year = dateParts[2];
-            return `${day} ${month} ${year}`;
-        }
-
-        // Fetch the blog posts JSON
-        fetch('../posts/blog-posts.json')
-            .then(response => response.json())
-            .then(data => {
-                // Find the post for "Forest"
-                const post = data.posts.find(p => p.title === "Forest");
-
-                if (post) {
-                    // Update the page content with the post data
-                    document.getElementById('post-title').textContent = post.title;
-                    document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
-                    const postImgEl = document.getElementById('post-image');
-                    const hero = post.hero || post.image;
-                    const thumb = post.thumb || post.image;
-                    postImgEl.src = hero || thumb || post.image;
-                    postImgEl.alt = post.title;
-                    postImgEl.srcset = [
-                        post.hero ? `${post.hero} 1600w` : null,
-                        post.thumb ? `${post.thumb} 800w` : null,
-                        `${post.image} 400w`
-                    ].filter(Boolean).join(', ');
-                    postImgEl.sizes = '(min-width:1600px) 1600px, (min-width:1000px) 1000px, 100vw';
-
-                    // Enlarge landscape images on load
-                    const applyEnlarge = () => {
-                        if (!postImgEl.naturalWidth) return;
-                        const aspect = postImgEl.naturalWidth / postImgEl.naturalHeight;
-                        if (aspect > 1.3) {
-                            postImgEl.classList.add('landscape-enlarge');
-                        } else {
-                            postImgEl.classList.remove('landscape-enlarge');
-                        }
-                    };
-                    postImgEl.addEventListener('load', applyEnlarge);
-                    if (postImgEl.complete && postImgEl.naturalWidth) applyEnlarge();
-
-                    // If the post has a map, display it
-                    if (post.hasMap) {
-                        document.getElementById('basicMap').style.display = 'block'; // Show the map
-
-                        // Wait for a short delay to ensure the map container is visible before initializing the map
-                        setTimeout(() => {
-                            const coordinates = [post.mapCoordinates.lon, post.mapCoordinates.lat];
-                            initMap(coordinates); // Initialize the map with the coordinates
-                        }, 100); // Delay initialization for map rendering
-                    }
-                } else {
-                    document.getElementById('post-title').textContent = "Post not found";
-                    document.getElementById('post-date').textContent = "";
-                    document.getElementById('post-image').style.display = 'none';
-                }
-            })
-            .catch(error => console.error('Error loading blog post:', error));
-
+        // Generic initMap retained so posts using maps work with shared loader.
         function initMap(coordinates) {
             const pinCoordinates = ol.proj.fromLonLat(coordinates);
 
@@ -154,10 +92,11 @@
 
             map.addLayer(vectorLayer);
             map.getView().setCenter(pinCoordinates);
-            map.getView().setZoom(18); // Closer zoom level for a more focused view
+            map.getView().setZoom(18);
         }
     </script>
-</body>
-<script src="/scripts/highlight-footer.js"></script>
-</body>
-</html>
+
+    <script src="/scripts/post-meta.js"></script>
+    <script src="/scripts/highlight-footer.js"></script>
+    </body>
+    </html>
