@@ -12,29 +12,29 @@
     {
       "title": "Hike 4",
       "published": "18-11-2025",
-      "image": "../blog-images/hike-4.jpg",
+      "image": "../blog-images/hike.jpg",
       "link": "posts/hike-4.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/hike-4-800.jpg",
-      "hero": "../blog-images/thumbs/hike-4-1600.jpg"
+      "thumb": "../blog-images/thumbs/hike-800.jpg",
+      "hero": "../blog-images/thumbs/hike-1600.jpg"
     },
     {
       "title": "Hike 3",
       "published": "18-11-2025",
-      "image": "../blog-images/hike-3.jpg",
+      "image": "../blog-images/hike-a.jpg",
       "link": "posts/hike-3.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/hike-3-800.jpg",
-      "hero": "../blog-images/thumbs/hike-3-1600.jpg"
+      "thumb": "../blog-images/thumbs/hike-a-800.jpg",
+      "hero": "../blog-images/thumbs/hike-a-1600.jpg"
     },
     {
       "title": "Icelandic Road 2",
       "published": "18-11-2025",
-      "image": "../blog-images/icelandic-road-2.jpg",
+      "image": "../blog-images/icelandic-road.jpg",
       "link": "posts/icelandic-road-2.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/icelandic-road-2-800.jpg",
-      "hero": "../blog-images/thumbs/icelandic-road-2-1600.jpg"
+      "thumb": "../blog-images/thumbs/icelandic-road-800.jpg",
+      "hero": "../blog-images/thumbs/icelandic-road-1600.jpg"
     },
     {
       "title": "Icelandic Road 1",
@@ -94,11 +94,11 @@
     {
       "title": "Hike 2",
       "published": "17-11-2025",
-      "image": "../blog-images/hike-2.jpg",
+      "image": "../blog-images/hike-c.jpg",
       "link": "posts/hike-2.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/hike-2-800.jpg",
-      "hero": "../blog-images/thumbs/hike-2-1600.jpg"
+      "thumb": "../blog-images/thumbs/hike-c-800.jpg",
+      "hero": "../blog-images/thumbs/hike-c-1600.jpg"
     },
     {
       "title": "Icelandic House",
@@ -139,20 +139,20 @@
     {
       "title": "Pupil",
       "published": "17-11-2025",
-      "image": "../blog-images/pupil-1.jpg",
+      "image": "../blog-images/pupil.jpg",
       "link": "posts/pupil.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/pupil-1-800.jpg",
-      "hero": "../blog-images/thumbs/pupil-1-1600.jpg"
+      "thumb": "../blog-images/thumbs/pupil-800.jpg",
+      "hero": "../blog-images/thumbs/pupil-1600.jpg"
     },
     {
       "title": "Winter Trees",
       "published": "26-11-2024",
-      "image": "../blog-images/winter-trees-1.jpg",
+      "image": "../blog-images/winter-trees.jpg",
       "link": "posts/winter-trees.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/winter-trees-1-800.jpg",
-      "hero": "../blog-images/thumbs/winter-trees-1-1600.jpg"
+      "thumb": "../blog-images/thumbs/winter-trees-800.jpg",
+      "hero": "../blog-images/thumbs/winter-trees-1600.jpg"
     },
     {
       "title": "Winter Tree",
@@ -166,24 +166,24 @@
     {
       "title": "Reykjavik Winter",
       "published": "22-10-2024",
-      "image": "../blog-images/mountain-house.jpeg",
+      "image": "../blog-images/reykjavik-winter.jpeg",
       "link": "posts/reykjavik-winter.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/mountain-house-800.jpg",
-      "hero": "../blog-images/thumbs/mountain-house-1600.jpg"
+      "thumb": "../blog-images/thumbs/reykjavik-winter-800.jpg",
+      "hero": "../blog-images/thumbs/reykjavik-winter-1600.jpg"
     },
     {
       "title": "Find The Light",
       "published": "21-10-2024",
-      "image": "../blog-images/thelight.jpeg",
+      "image": "../blog-images/find-the-light.jpeg",
       "link": "posts/the-light.html",
       "hasMap": true,
       "mapCoordinates": {
         "lon": -21.9879552,
         "lat": 64.1474433
       },
-      "thumb": "../blog-images/thumbs/thelight-800.jpg",
-      "hero": "../blog-images/thumbs/thelight-1600.jpg"
+      "thumb": "../blog-images/thumbs/find-the-light-800.jpg",
+      "hero": "../blog-images/thumbs/find-the-light-1600.jpg"
     },
     {
       "title": "Break Time",
@@ -206,24 +206,24 @@
     {
       "title": "Sea",
       "published": "11-10-2024",
-      "image": "../blog-images/sea-1.jpg",
+      "image": "../blog-images/sea.jpg",
       "link": "posts/Sea.html",
       "hasMap": true,
       "mapCoordinates": {
         "lon": -21.9222846,
         "lat": 64.1476306
       },
-      "thumb": "../blog-images/thumbs/sea-1-800.jpg",
-      "hero": "../blog-images/thumbs/sea-1-1600.jpg"
+      "thumb": "../blog-images/thumbs/sea-800.jpg",
+      "hero": "../blog-images/thumbs/sea-1600.jpg"
     },
     {
       "title": "Road",
       "published": "11-10-2024",
-      "image": "../blog-images/road-1.jpg",
+      "image": "../blog-images/road.jpg",
       "link": "posts/Road.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/road-1-800.jpg",
-      "hero": "../blog-images/thumbs/road-1-1600.jpg"
+      "thumb": "../blog-images/thumbs/road-800.jpg",
+      "hero": "../blog-images/thumbs/road-1600.jpg"
     }
   ]
 }
