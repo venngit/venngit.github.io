@@ -51,7 +51,8 @@
 
   // Auto-run
   (function(){
-    const filename = window.location.pathname.split('/').pop();
+    // Use decoded filename so URLs with spaces (%20) match entries in blog-posts.json
+    const filename = decodeURIComponent(window.location.pathname.split('/').pop());
     fetch('/posts/blog-posts.json')
       .then(r => r.json())
       .then(data => {
