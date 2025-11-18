@@ -46,6 +46,16 @@
       "hero": "../blog-images/thumbs/icelandic-road-1-1600.jpg"
     },
     {
+      "title": "Whisky and the Gaze",
+      "published": "17-11-2025",
+      "image": "../blog-images/whisky-bw-raw-1.jpg",
+      "link": "posts/whisky-and-the-gaze.html",
+      "hasMap": false,
+      "featured": true,
+      "thumb": "../blog-images/thumbs/whisky-bw-raw-1-800.jpg",
+      "hero": "../blog-images/thumbs/whisky-bw-raw-1-1600.jpg"
+    },
+    {
       "title": "Abandoned Vaccum",
       "published": "17-11-2025",
       "image": "../blog-images/abandoned-vaccum.jpg",
