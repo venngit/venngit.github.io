@@ -42,5 +42,26 @@
     </footer>
 
     <script src="/scripts/highlight-footer.js"></script>
+        <script>
+            function formatDate(dateString) {
+                const parts = dateString.split('-');
+                const day = parts[0];
+                const month = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`).toLocaleString('en-US', { month: 'short' });
+                const year = parts[2];
+                return `${day} ${month} ${year}`;
+            }
+            (function(){
+                const path = window.location.pathname.split('/').pop();
+                fetch('../posts/blog-posts.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        const post = data.posts.find(p => p.link && p.link.endsWith(path));
+                        if (post && post.published) {
+                            const el = document.getElementById('post-date');
+                            if (el) el.textContent = 'Published on ' + formatDate(post.published);
+                        }
+                    }).catch(() => {});
+            })();
+        </script>
 </body>
 </html>
