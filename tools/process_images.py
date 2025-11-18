@@ -83,6 +83,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', default='blog-images', help='Source directory relative to repo root')
     parser.add_argument('--dest', default='blog-images/thumbs', help='Destination directory for thumbs')
+    parser.add_argument('--file', default=None, help='(Optional) Process only this file (path or filename) relative to the source dir')
     parser.add_argument('--sizes', nargs='+', type=int, default=[1600, 800, 400], help='Sizes (px) to generate')
     parser.add_argument('--no-webp', dest='webp', action='store_false', help='Do not create webp variants')
     parser.add_argument('--no-update-json', dest='update_json', action='store_false', help='Do not update posts/blog-posts.json')
@@ -99,8 +100,21 @@ def main():
     ensure_dir(dest_dir)
 
     mapping = {}
-    files = [p for p in source_dir.iterdir() if p.is_file() and p.suffix.lower() in VALID_EXT]
-    print(f'Found {len(files)} image(s) in {source_dir}')
+    # Allow processing a single specified file (relative to source dir) for faster updates
+    if args.file:
+        candidate = source_dir / args.file
+        # If user supplied only a filename, try resolving by name
+        if not candidate.exists():
+            candidate = source_dir / Path(args.file).name
+        if not candidate.exists() or not candidate.is_file():
+            print(f"Specified file not found in source directory: {args.file}")
+            sys.exit(1)
+        files = [candidate]
+        print(f"Processing single file: {candidate.name} in {source_dir}")
+    else:
+        files = [p for p in source_dir.iterdir() if p.is_file() and p.suffix.lower() in VALID_EXT]
+        print(f'Found {len(files)} image(s) in {source_dir}')
+
     for f in files:
         print('Processing', f.name)
         qmap = None
