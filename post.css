@@ -1,8 +1,8 @@
 /* Post-specific styles (overrides for single-post pages) */
 
-/* Constrain the article width for comfortable reading */
+/* Constrain the article width for comfortable reading (increased for HD images) */
 article {
-    max-width: 980px;
+    max-width: 1600px;
     margin: 24px auto;
     padding: 0 16px;
 }
@@ -68,8 +68,9 @@ header h2 {
 
 /* Enlarge landscape images on single-post pages by scaling (keeps image centered reliably) */
 :root {
-    --post-image-max-width: 1200px; /* maximum displayed width for enlarged images */
-    --post-image-side-gap: 200px; /* space to leave at sides on very wide screens */
+    /* Increased limits so single-post images can display larger for HD photos */
+    --post-image-max-width: 2400px; /* maximum displayed width for enlarged images */
+    --post-image-side-gap: 160px; /* space to leave at sides on very wide screens */
 }
 
 /* Center a wider-than-article image by positioning it and translating -50% */
