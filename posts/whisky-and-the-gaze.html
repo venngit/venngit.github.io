@@ -61,8 +61,16 @@
 					document.getElementById('post-title').textContent = post.title;
 					document.getElementById('post-date').textContent = `Published on ${formatDate(post.published)}`;
 					const postImgEl = document.getElementById('post-image');
-					postImgEl.src = post.image;
+					const hero = post.hero || post.image;
+					const thumb = post.thumb || post.image;
+					postImgEl.src = hero || thumb || post.image;
 					postImgEl.alt = post.title;
+					postImgEl.srcset = [
+						post.hero ? `${post.hero} 1600w` : null,
+						post.thumb ? `${post.thumb} 800w` : null,
+						`${post.image} 400w`
+					].filter(Boolean).join(', ');
+					postImgEl.sizes = '(min-width:1600px) 1600px, (min-width:1000px) 1000px, 100vw';
 
 					// Enlarge landscape images on load
 					const applyEnlarge = () => {

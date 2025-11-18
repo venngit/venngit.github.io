@@ -7,7 +7,8 @@
       "link": "posts/whisky-and-the-gaze.html",
       "hasMap": false,
       "featured": true,
-      "thumb": "../blog-images/thumbs/whisky-bw-raw-1-800.jpg"
+      "thumb": "../blog-images/thumbs/whisky-bw-raw-1-800.jpg",
+      "hero": "../blog-images/thumbs/whisky-bw-raw-1-1600.jpg"
     },
     {
       "title": "Abandoned Vaccum",
@@ -15,7 +16,8 @@
       "image": "../blog-images/abandoned-vaccum.jpg",
       "link": "posts/abandoned-vaccum.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/abandoned-vaccum-800.jpg"
+      "thumb": "../blog-images/thumbs/abandoned-vaccum-800.jpg",
+      "hero": "../blog-images/thumbs/abandoned-vaccum-1600.jpg"
     },
     {
       "title": "Forest",
@@ -23,7 +25,8 @@
       "image": "../blog-images/forest-1.jpg",
       "link": "posts/forest.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/forest-1-800.jpg"
+      "thumb": "../blog-images/thumbs/forest-1-800.jpg",
+      "hero": "../blog-images/thumbs/forest-1-1600.jpg"
     },
     {
       "title": "Geothermal",
@@ -31,7 +34,8 @@
       "image": "../blog-images/geothermal-1.jpg",
       "link": "posts/geothermal.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/geothermal-1-800.jpg"
+      "thumb": "../blog-images/thumbs/geothermal-1-800.jpg",
+      "hero": "../blog-images/thumbs/geothermal-1-1600.jpg"
     },
     {
       "title": "Hike",
@@ -39,7 +43,8 @@
       "image": "../blog-images/hike-1.jpg",
       "link": "posts/hike.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/hike-1-800.jpg"
+      "thumb": "../blog-images/thumbs/hike-1-800.jpg",
+      "hero": "../blog-images/thumbs/hike-1-1600.jpg"
     },
     {
       "title": "Hike 2",
@@ -47,7 +52,8 @@
       "image": "../blog-images/hike-2.jpg",
       "link": "posts/hike-2.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/hike-2-800.jpg"
+      "thumb": "../blog-images/thumbs/hike-2-800.jpg",
+      "hero": "../blog-images/thumbs/hike-2-1600.jpg"
     },
     {
       "title": "Icelandic House",
@@ -55,7 +61,8 @@
       "image": "../blog-images/icelandic-house.jpg",
       "link": "posts/icelandic-house.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/icelandic-house-800.jpg"
+      "thumb": "../blog-images/thumbs/icelandic-house-800.jpg",
+      "hero": "../blog-images/thumbs/icelandic-house-1600.jpg"
     },
     {
       "title": "Long Walk",
@@ -63,7 +70,8 @@
       "image": "../blog-images/long-walk.jpg",
       "link": "posts/long-walk.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/long-walk-800.jpg"
+      "thumb": "../blog-images/thumbs/long-walk-800.jpg",
+      "hero": "../blog-images/thumbs/long-walk-1600.jpg"
     },
     {
       "title": "Man and the Sea",
@@ -71,7 +79,8 @@
       "image": "../blog-images/man-and-the-sea.jpg",
       "link": "posts/man-and-the-sea.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/man-and-the-sea-800.jpg"
+      "thumb": "../blog-images/thumbs/man-and-the-sea-800.jpg",
+      "hero": "../blog-images/thumbs/man-and-the-sea-1600.jpg"
     },
     {
       "title": "Never Sunset",
@@ -79,7 +88,8 @@
       "image": "../blog-images/never-sunset.jpg",
       "link": "posts/never-sunset.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/never-sunset-800.jpg"
+      "thumb": "../blog-images/thumbs/never-sunset-800.jpg",
+      "hero": "../blog-images/thumbs/never-sunset-1600.jpg"
     },
     {
       "title": "Pupil",
@@ -87,7 +97,8 @@
       "image": "../blog-images/pupil-1.jpg",
       "link": "posts/pupil.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/pupil-1-800.jpg"
+      "thumb": "../blog-images/thumbs/pupil-1-800.jpg",
+      "hero": "../blog-images/thumbs/pupil-1-1600.jpg"
     },
     {
       "title": "Winter Trees",
@@ -95,7 +106,8 @@
       "image": "../blog-images/winter-trees-1.jpg",
       "link": "posts/winter-trees.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/winter-trees-1-800.jpg"
+      "thumb": "../blog-images/thumbs/winter-trees-1-800.jpg",
+      "hero": "../blog-images/thumbs/winter-trees-1-1600.jpg"
     },
     {
       "title": "Winter Tree",
@@ -103,7 +115,8 @@
       "image": "../blog-images/winter-tree.jpeg",
       "link": "posts/winter-tree.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/winter-tree-800.jpg"
+      "thumb": "../blog-images/thumbs/winter-tree-800.jpg",
+      "hero": "../blog-images/thumbs/winter-tree-1600.jpg"
     },
     {
       "title": "Reykjavik Winter",
@@ -111,7 +124,8 @@
       "image": "../blog-images/mountain-house.jpeg",
       "link": "posts/reykjavik-winter.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/mountain-house-800.jpg"
+      "thumb": "../blog-images/thumbs/mountain-house-800.jpg",
+      "hero": "../blog-images/thumbs/mountain-house-1600.jpg"
     },
     {
       "title": "Find The Light",
@@ -123,7 +137,8 @@
         "lon": -21.9879552,
         "lat": 64.1474433
       },
-      "thumb": "../blog-images/thumbs/thelight-800.jpg"
+      "thumb": "../blog-images/thumbs/thelight-800.jpg",
+      "hero": "../blog-images/thumbs/thelight-1600.jpg"
     },
     {
       "title": "Break Time",
@@ -131,7 +146,8 @@
       "image": "../blog-images/break-time.jpg",
       "link": "posts/Break Time.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/break-time-800.jpg"
+      "thumb": "../blog-images/thumbs/break-time-800.jpg",
+      "hero": "../blog-images/thumbs/break-time-1600.jpg"
     },
     {
       "title": "Whisky and the Sun",
@@ -139,7 +155,8 @@
       "image": "../blog-images/whisky-and-the-sun.jpeg",
       "link": "posts/Whisky and the Sun.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/whisky-and-the-sun-800.jpg"
+      "thumb": "../blog-images/thumbs/whisky-and-the-sun-800.jpg",
+      "hero": "../blog-images/thumbs/whisky-and-the-sun-1600.jpg"
     },
     {
       "title": "Sea",
@@ -151,7 +168,8 @@
         "lon": -21.9222846,
         "lat": 64.1476306
       },
-      "thumb": "../blog-images/thumbs/sea-1-800.jpg"
+      "thumb": "../blog-images/thumbs/sea-1-800.jpg",
+      "hero": "../blog-images/thumbs/sea-1-1600.jpg"
     },
     {
       "title": "Road",
@@ -159,7 +177,8 @@
       "image": "../blog-images/road-1.jpg",
       "link": "posts/Road.html",
       "hasMap": false,
-      "thumb": "../blog-images/thumbs/road-1-800.jpg"
+      "thumb": "../blog-images/thumbs/road-1-800.jpg",
+      "hero": "../blog-images/thumbs/road-1-1600.jpg"
     }
   ]
 }
